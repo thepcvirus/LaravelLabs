@@ -24,7 +24,7 @@ class PostsController extends Controller
         return view('Posts.create', compact('users'));
     }
 
-    public function store(StorePostRequest $request)
+    public function store(StorePostRequest $request)//---NOTE--- ya mohamed now we are using the API route to store the post and not this one
     {
         
         $validated = $request->validated();
@@ -89,8 +89,9 @@ class PostsController extends Controller
             $path = $request->file('image')->store('images/posts', 'public');
         }
 
-        Storage::disk('public')->delete($post->image_path);
-        
+        if($post->image_path != null) {
+            Storage::disk('public')->delete($post->image_path);
+        }
 
         $post->title = $request->input('title');
         $post->postedby = $request->input('postedby');
@@ -103,7 +104,9 @@ class PostsController extends Controller
 
     public function destroy($id){
         $post = Post::findorFail($id);
-        Storage::disk('public')->delete($post->image_path);
+        if($post->image_path != null) {
+            Storage::disk('public')->delete($post->image_path);
+        }
         $post->image_path = null;
         //$post->comments()->delete(); // Delete associated comments
         $post->save();
