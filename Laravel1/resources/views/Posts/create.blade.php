@@ -5,7 +5,7 @@
 @section('content')
     <div class="container mx-auto mt-8">
         <h1 class="text-2xl font-bold mb-4">Create New Post</h1>
-        <form action="{{ route('posts.store') }}" method="Post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" enctype="multipart/form-data">
+        <form action="{{ route('api.createPost') }}" method="Post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" enctype="multipart/form-data">
             @csrf
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="title">Title</label>

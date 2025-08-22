@@ -89,7 +89,9 @@ class PostsController extends Controller
             $path = $request->file('image')->store('images/posts', 'public');
         }
 
-        Storage::disk('public')->delete($post->image_path);
+        if($post->image_path != null) {
+            Storage::disk('public')->delete($post->image_path);
+        }
         
 
         $post->title = $request->input('title');
@@ -103,7 +105,9 @@ class PostsController extends Controller
 
     public function destroy($id){
         $post = Post::findorFail($id);
-        Storage::disk('public')->delete($post->image_path);
+        if($post->image_path != null) {
+            Storage::disk('public')->delete($post->image_path);
+        }
         $post->image_path = null;
         //$post->comments()->delete(); // Delete associated comments
         $post->save();

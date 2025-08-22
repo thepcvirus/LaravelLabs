@@ -40,7 +40,7 @@
                 <td class="py-2 px-4 border-b">{{ $post->slug}}</td>
                 <td class="py-2 px-4 border-b">{{ $post->description }}</td>
                 <td class="py-2 px-4 border-b">{{ $post->user->name }}</td>
-                <td class="py-2 px-4 border-b">{{ $post->created_at->format('M d, Y H:i') }}</td>
+                <td class="py-2 px-4 border-b">{{ $post->created_at_formatted}}</td>
                 <td class="py-2 px-4 border-b">
                     <button class="bg-green-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded mr-1" style="background-color:#2563eb;"><a href="{{ route('posts.show', ['id' => $post->id]) }}">View</a></button>
                     <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded mr-1" style="background-color:#f59e42;"><a href="{{ route('posts.edit', ['id' => $post->id]) }}">Edit</a></button>

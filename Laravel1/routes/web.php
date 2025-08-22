@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\ApiController;
 
 
 Route::get('/', [PostsController::class, 'home'])->name('home');
@@ -24,6 +25,15 @@ Route::prefix('/comments')->controller(CommentsController::class)->group(functio
 Route::get('/{id}/edit', 'edit')->name('comments.edit');
 Route::put('/{id}' ,'update')->name('comments.update');
 Route::delete('/{id}' ,'destroy')->name('comments.destroy');
+});
+
+Route::prefix('/api')->controller(ApiController::class)->group(function () {
+    Route::get('/', function () {
+    return response()->json(['message' => 'API is working']);
+})->name('api.index');
+Route::get('/posts/{id}', 'getPost')->name('api.getPost');
+Route::get('/posts', 'getAllPosts')->name('api.getAllPosts');
+Route::post('/posts', 'CreatePost')->name('api.createPost');
 });
 
 

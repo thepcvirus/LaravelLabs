@@ -7,7 +7,9 @@
         <h1 class="text-2xl font-bold mb-4">View Post</h1>
         <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
             @if ($post->image_path != null)
-            <img src="{{ asset('storage/' . $post->image_path) }}" alt="Post Image" class="mb-4 object-cover  w-100">    
+            <img src="{{ asset('storage/' . $post->image_path) }}" alt="Post Image" class="mb-4 object-cover  w-100">  
+            {{ asset('storage/' . $post->image_path) }}  
+            {{ $post->image_path }}
             @endif
             <h2 class="text-xl font-semibold mb-2">Post ID: ({{ $post->id }})</h2>
             <h2 class="text-xl font-semibold mb-2">Post Title: {{ $post->title }}</h2>
