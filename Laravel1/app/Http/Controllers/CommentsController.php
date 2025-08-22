@@ -28,7 +28,7 @@ class CommentsController extends Controller
     public function edit($id){
         $comment = Comment::findorFail($id);
         $users = User::all();
-        return view('edit_comment', compact('comment', 'users'));
+        return view('Comments.edit_comment', compact('comment', 'users'));
     }
 
     public function update(Request $request){

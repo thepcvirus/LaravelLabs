@@ -169,6 +169,8 @@ return [
             'database' => env('REDIS_CACHE_DB', '1'),
         ],
 
+        
+
     ],
 
 ];

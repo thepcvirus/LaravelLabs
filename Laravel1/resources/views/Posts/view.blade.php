@@ -1,16 +1,19 @@
-@extends('layout')
+@extends('Layout.layout')
 
 @section('title', 'Create Post')
 
 @section('content')
     <div class="container mx-auto mt-8">
         <h1 class="text-2xl font-bold mb-4">View Post</h1>
-        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">    
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            @if ($post->image_path != null)
+            <img src="{{ asset('storage/' . $post->image_path) }}" alt="Post Image" class="mb-4 object-cover  w-100">    
+            @endif
             <h2 class="text-xl font-semibold mb-2">Post ID: ({{ $post->id }})</h2>
             <h2 class="text-xl font-semibold mb-2">Post Title: {{ $post->title }}</h2>
             <p class="text-gray-700 mb-4"><strong>Posted By:</strong> {{ $post->user->name }}</p>
             <p class="text-gray-700 mb-4"><strong>Description:</strong> {{ $post->description }}</p>
-            <p class="text-gray-500 text-sm">Created At: {{ $post->createdat}}</p>
+            <p class="text-gray-500 text-sm">Created At: {{ $post->created_at}}</p>
     </div>
     <div class="mt-6">
         <h3 class="text-lg font-semibold mb-2">Comments</h3>

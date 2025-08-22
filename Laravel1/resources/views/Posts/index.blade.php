@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('Layout.layout')
 
 @section('title', 'Create Post')
 
@@ -25,6 +25,7 @@
         <tr>
             <th class="py-2 px-4 border-b">ID</th>
             <th class="py-2 px-4 border-b">Title</th>
+            <th class="py-2 px-4 border-b">Slug</th>
             <th class="py-2 px-4 border-b">Description</th>
             <th class="py-2 px-4 border-b">Posted By</th>
             <th class="py-2 px-4 border-b">Created At</th>
@@ -36,6 +37,7 @@
             <tr>
                 <td class="py-2 px-4 border-b">{{ $post->id }}</td>
                 <td class="py-2 px-4 border-b">{{ $post->title}}</td>
+                <td class="py-2 px-4 border-b">{{ $post->slug}}</td>
                 <td class="py-2 px-4 border-b">{{ $post->description }}</td>
                 <td class="py-2 px-4 border-b">{{ $post->user->name }}</td>
                 <td class="py-2 px-4 border-b">{{ $post->created_at->format('M d, Y H:i') }}</td>

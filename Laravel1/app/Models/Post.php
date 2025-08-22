@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory,SoftDeletes,Sluggable;
     protected $fillable = ['title', 'description', 'postedby', 'created_at'];
 
     public function user(){
@@ -19,4 +20,13 @@ class Post extends Model
 {
     return $this->hasMany(Comment::class);
 }
+
+public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 }
